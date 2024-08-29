@@ -61,7 +61,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://api.discoveryournextjourney.com/v1/photoai', options)
+            await fetch('https://api.stepintonewsensation.com/v1/photoai', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
@@ -84,10 +84,10 @@ export default function Result() {
     
 
     return (
-        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-top items-center py-16 px-20">
+        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
             {/* QR */}
             {generateQR && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai2 bg-opacity-0'>
                     <div className='fixed top-0 mx-auto w-[85%] mt-24'>
                         <Image src='/title-scan2.png' width={815} height={195} alt='Zirolu' className='w-full' priority />
                     </div>
@@ -121,10 +121,10 @@ export default function Result() {
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
-                    <div className={`fixed left-0 bottom-0 w-full`}>
-                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                    <div className={`fixed left-0 bottom-8 w-full`}>
+                        <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
-                                <Image src='/btn-back2.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
+                                <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
@@ -137,25 +137,25 @@ export default function Result() {
                     <Image src='/title-discover.png' width={626} height={160} alt='Zirolu' className='w-full' priority />
                 </div>*/}
                 {imageResultAI && 
-                <div className='relative w-[75%] mt-10 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[95%] mt-10 mx-auto flex justify-center items-center' onClick={downloadImageAI}>
                     <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
                         <Image src={imageResultAI}  width={1080} height={1920} alt='Zirolu' className='relative block w-full'></Image> 
                     </div>
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='rrelative p-5 mt-14 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-4xl overflow-auto no-scrollbar w-[60%] mx-auto rounded-lg'>
+                    <div className='rrelative p-5 mt-14 border-2 border-[#191657] text-center bg-[#191657] text-[#fff] text-4xl overflow-auto no-scrollbar w-[60%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-14`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
+                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                                <button className="w-full relative mx-auto flex justify-center items-center mb-10">
                                     <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
-                                </div>
-                                <Link href='/home' className="relative w-full mx-auto flex justify-center items-center">
+                                </button>
+                                <Link href='/home' className="relative w-[80%] mx-auto flex justify-center items-center">
                                     <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>

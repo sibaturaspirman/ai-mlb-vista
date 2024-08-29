@@ -25,7 +25,7 @@ export default function MLBHome() {
     };
 
     const fetchData = async () => {
-      const response = await fetch('https://api.discoveryournextjourney.com/v1/totem', options)
+      const response = await fetch('https://api.stepintonewsensation.com/v1/totem', options)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }

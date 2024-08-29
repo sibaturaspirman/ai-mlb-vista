@@ -235,6 +235,73 @@ body {
     transition: all 0.2s ease;
 }
 
+.choose4{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.choose4 li{
+  display: block;
+  position: relative;
+  margin-right: 25px;
+  width: 45%;
+}
+.choose4 li:last-child{
+  margin-right: 0;
+}
+.choose4 li label{
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0px 0px transparent;
+  transition: all ease 300ms;
+  padding: 30px 15px;
+  background-color: #f5f5f5;
+  color: #191657;
+  width: 100%;
+  text-align: center;
+  line-height: 1.1;
+  /* height: 60px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.choose4.mod li label{
+  color: #000;
+}
+.choose4 [type="radio"]:checked,
+.choose4 [type="radio"]:not(:checked) {
+    position: absolute;
+    left: 0;top: 0;
+    opacity: 0;
+}
+
+.choose4 [type="radio"]:checked + label{
+  background-color: #191657;
+  border-color: #fff;
+  box-shadow: 0px 0px 8px 0px #efedea;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.choose4.mod [type="radio"]:checked + label{
+  background-color: #000;
+  border-color: #fff;
+  box-shadow: 0px 0px 8px 0px #efedea;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.choose4 [type="radio"]:checked + label,
+.choose4 [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    cursor: pointer;
+    /* display: inline-block; */
+}
+
 .canvas-qr canvas{
   width: 100% !important;
   height: auto !important;
@@ -242,17 +309,22 @@ body {
 
 /* KAI */
 .bg-kai{
-  background-image: url(../public/bg-black.jpeg);
+  background-image: url(../public/bg.jpg);
   background-size: cover;
   background-position: top center;
 }
 .bg-kai2{
-  background-image: url(../public/bg-red.jpeg);
+  background-image: url(../public/bg2.jpg);
   background-size: cover;
   background-position: top center;
 }
 .bg-kai3{
   background-image: url(../public/bg-white.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-loading{
+  background-image: url(../public/bg-loading.jpg);
   background-size: cover;
   background-position: top center;
 }

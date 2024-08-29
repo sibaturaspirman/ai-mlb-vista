@@ -9,7 +9,7 @@ import { useQRCode } from 'next-qrcode';
 import io from 'socket.io-client';
 
 // SETUP SOCKET
-let SERVER_IP = "https://api.discoveryournextjourney.com";
+let SERVER_IP = "https://api.stepintonewsensation.com";
 let NETWORK = null;
 
 function emitNetworkConnection() {
@@ -27,7 +27,7 @@ function emitNetworkConnection() {
 function emitString(key, payload) {
    NETWORK.emit(key, payload);
 }
-const socket = io("https://api.discoveryournextjourney.com");
+const socket = io("https://api.stepintonewsensation.com");
 
 // !SETUP SOCKET
 
@@ -50,7 +50,7 @@ export default function MLBHome() {
   });
 
   useEffect(() => {
-    let urlContent = 'https://discoveryournextjourney.com/g/'+payload.stasiun+"/"+roomCode.toString()
+    let urlContent = 'https://stepintonewsensation.com/g/'+payload.stasiun+"/"+roomCode.toString()
     setLinkQR(urlContent)
   }, [linkQR])
 
@@ -65,8 +65,8 @@ export default function MLBHome() {
 
   return (
     <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center py-16 px-20 top-0">
-      <div className='fixed top-[10rem] w-[95%]'>
-          <Image src='/title-scan.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
+      <div className='fixed top-[10rem] w-[90%]'>
+          <Image src='/title-scan.png' width={892} height={316} alt='Zirolu' className='w-full' priority />
       </div>
       <dv className='relative w-[750px] flex justify-center items-center'>
         <div className='absolute w-full top-0 left-0'>

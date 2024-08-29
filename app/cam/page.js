@@ -28,6 +28,7 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedAwal, setCapturedAwal] = useState(false);
     // const [countDown, setCoundown] = useState(5);
     // const [counter, setCounter] = useState(60);
     // const waktuBatasTake = useRef(null);
@@ -41,6 +42,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
+        setCapturedAwal(true)
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
@@ -103,10 +105,11 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
+        setCapturedAwal(false)
     }
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
-            <div className='fixed top-14 w-[65%]'>
+            <div className='fixed top-[6rem] w-[65%]'>
                 <Image src='/title-take.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-[-12vh]">
@@ -129,21 +132,21 @@ export default function Cam() {
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-xl lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                    <p className='block text-center text-xl lg:text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
                 }
             </div>
 
 
             {!enabled && 
-                <div className="fixed left-0 bottom-14 w-full flex justify-center items-center">
-                    <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
+                <div className={`fixed left-0 bottom-[5rem] w-full flex justify-center items-center ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
+                    <button className="relative mx-auto flex  w-[70%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
-            <div className={`fixed left-0 bottom-14 w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center">
+            <div className={`fixed left-0 bottom-[5rem] w-full ${!enabled ? 'hidden' : ''}`}>
+                <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center mb-10">
                         <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center" onClick={retake}>

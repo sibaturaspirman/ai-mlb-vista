@@ -33,6 +33,7 @@ export default function GenerateAmero() {
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+    const [styleFemale, setStyleFemale] = useState('normal');
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -57,12 +58,18 @@ export default function GenerateAmero() {
         
         if(styleGender =='m'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 4))
+                generateImageSwap(styleGender, getRandomInt(1, 3))
             }, 500);
         }else if(styleGender =='f'){
-            setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 6))
-            }, 500);
+            if(styleFemale == 'normal'){
+                setTimeout(() => {
+                    generateImageSwap(styleGender, getRandomInt(1, 3))
+                }, 500);
+            }else{
+                setTimeout(() => {
+                    generateImageSwap('h', getRandomInt(1, 2))
+                }, 500);
+            }
         }
 
     }
@@ -112,7 +119,7 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/fix/'+gender+'-fix-'+number+'.jpeg'
+        const urlGambar = 'https://ai.stepintonewsensation.com/style/'+gender+'-'+number+'.jpg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
@@ -172,25 +179,17 @@ export default function GenerateAmero() {
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
             {numProses1 && 
-                <div className='absolute top-[-18vh] left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
+                <div className='absolute top-0 bg-loading left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     <div className='relative w-[80%] overflow-hidden'>
                         <div className='relative w-full'>
-                            <Image src='/explore.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
+                            <Image src='/loading.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div>
-                    <div className='animate-upDownCepet relative p-8 mt-24 text-4xl border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] font-bold rounded-lg'>
+                    <div className='animate-upDownCepet relative p-8 mt-24 text-4xl border-2 border-[#191657] text-center bg-[#191657] text-[#fff] font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
-
-                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[150px] w-[60%] mx-auto rounded-lg hidden'>
-                        <code>
-                        {logs.filter(Boolean).join('\n')}
-                        </code>
-                        AI generate face... <br></br>
-                        Loading model..<br></br>
-                    </pre>
                 </div>
             }
             {/* LOADING */}
@@ -199,7 +198,7 @@ export default function GenerateAmero() {
                 <Image src='/title-select.png' width={686} height={112} alt='Zirolu' className='w-full' priority />
             </div>
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative mt-[-12vh] w-full'>
+                <div className='relative mt-[-35vh] w-full'>
                     <div className='relative w-full hiddenx'>
                         <div className='relative w-[60%] mb-12 mx-auto'>
                             <Image src='/title-identity.png' width={542} height={119} alt='Zirolu' className='w-full' priority />
@@ -247,14 +246,40 @@ export default function GenerateAmero() {
                                 </li>
                             </ul>
                         </div>
+                        {styleGender == 'f' &&
+                        <div className="mt-10">
+                            <ul className='choose4'>
+                                <li>
+                                    <input
+                                    id='choose_female3'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female3" className='text-5xl'>without Hijab</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_female2'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="hijab"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female2" className='text-5xl'>with Hijab</label>
+                                </li>
+                            </ul>
+                        </div>
+                        }
                     </div>
                 </div>
-                <div className={`fixed left-0 bottom-14 w-full`}>
-                    <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                <div className={`fixed left-0 bottom-[5rem] w-full`}>
+                    <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/home' className="relative w-full mx-auto flex justify-center items-center">
+                        <Link href='/home' className="relative w-[60%] mx-auto flex justify-center items-center mt-10">
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
