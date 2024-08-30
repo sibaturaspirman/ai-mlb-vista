@@ -63,7 +63,7 @@ export default function GenerateAmero() {
         }else if(styleGender =='f'){
             if(styleFemale == 'normal'){
                 setTimeout(() => {
-                    generateImageSwap(styleGender, getRandomInt(1, 4))
+                    generateImageSwap(styleGender, getRandomInt(1, 5))
                 }, 500);
             }else{
                 setTimeout(() => {
