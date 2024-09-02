@@ -85,7 +85,7 @@ export default function GenerateAmero() {
             }else{
                 gtag('event', 'ClickButton', {
                     event_category: 'Button',
-                    event_label: 'Female Hijab - '+payload.stasiunName,
+                    event_label: 'Hijab - '+payload.stasiunName,
                     event_action: 'SupriseMe'
                 })
                 setTimeout(() => {

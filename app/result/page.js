@@ -53,7 +53,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' - '+payload.stasiun)+' - '+payload.stasiunName;
+            bodyFormData.append("name", payload.name+' - '+payload.stasiun+' - '+payload.stasiunName);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("totemId", payload.stasiun);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
@@ -134,7 +134,7 @@ export default function Result() {
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
-                    <div className={`fixed left-0 bottom-8 w-full`}>
+                    <div className={`fixed left-0 bottom-8 w-full`} onClick={backHome}>
                         <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
