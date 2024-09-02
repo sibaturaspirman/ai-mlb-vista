@@ -53,8 +53,8 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' - '+payload.stasiun+' - '+payload.stasiunName);
-            bodyFormData.append("phone", payload.phone);
+            bodyFormData.append("name", getCookie('styleGender'));
+            bodyFormData.append("phone", payload.stasiun+' - '+payload.stasiunName);
             bodyFormData.append("totemId", payload.stasiun);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
           

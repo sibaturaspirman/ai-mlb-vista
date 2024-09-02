@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
 // import { Poppins} from "next/font/google";
 // const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
-import { getCookie } from 'cookies-next';
+import { setCookie, getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // import io from 'socket.io-client';
@@ -69,6 +69,7 @@ export default function GenerateAmero() {
                 event_label: 'Male - '+payload.stasiunName,
                 event_action: 'SupriseMe'
             })
+            setCookie('styleGender', 'Male');
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
@@ -79,6 +80,7 @@ export default function GenerateAmero() {
                     event_label: 'Female - '+payload.stasiunName,
                     event_action: 'SupriseMe'
                 })
+                setCookie('styleGender', 'Female');
                 setTimeout(() => {
                     generateImageSwap(styleGender, getRandomInt(1, 5))
                 }, 500);
@@ -88,6 +90,7 @@ export default function GenerateAmero() {
                     event_label: 'Hijab - '+payload.stasiunName,
                     event_action: 'SupriseMe'
                 })
+                setCookie('styleGender', 'Hijab');
                 setTimeout(() => {
                     generateImageSwap('h', getRandomInt(1, 4))
                 }, 500);
