@@ -67,7 +67,7 @@ export default function GenerateAmero() {
             gtag('event', 'ClickButton', {
                 event_category: 'Button',
                 event_label: 'Male - '+payload.stasiunName,
-                event_action: 'SupriseMe'
+                event_action: 'SurpriseMe'
             })
             setCookie('styleGender', 'Male');
             setTimeout(() => {
@@ -78,7 +78,7 @@ export default function GenerateAmero() {
                 gtag('event', 'ClickButton', {
                     event_category: 'Button',
                     event_label: 'Female - '+payload.stasiunName,
-                    event_action: 'SupriseMe'
+                    event_action: 'SurpriseMe'
                 })
                 setCookie('styleGender', 'Female');
                 setTimeout(() => {
@@ -88,7 +88,7 @@ export default function GenerateAmero() {
                 gtag('event', 'ClickButton', {
                     event_category: 'Button',
                     event_label: 'Hijab - '+payload.stasiunName,
-                    event_action: 'SupriseMe'
+                    event_action: 'SurpriseMe'
                 })
                 setCookie('styleGender', 'Hijab');
                 setTimeout(() => {

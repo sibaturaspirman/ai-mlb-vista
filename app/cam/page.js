@@ -49,6 +49,11 @@ export default function Cam() {
     }) => {
         setCaptured(true)
         setCapturedAwal(true)
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'TakePhoto - '+payload.stasiunName,
+            event_action: 'Capture'
+        })
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
@@ -114,8 +119,8 @@ export default function Cam() {
         setCapturedAwal(false)
         gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'Retake - '+payload.stasiunName,
-            event_action: 'Next'
+            event_label: 'TakePhoto - '+payload.stasiunName,
+            event_action: 'Retake'
         })
     }
 
@@ -123,7 +128,7 @@ export default function Cam() {
         gtag('event', 'ClickButton', {
             event_category: 'Button',
             event_label: 'TakePhoto - '+payload.stasiunName,
-            event_action: 'Next'
+            event_action: 'Continue'
         })
     }
     return (
@@ -166,7 +171,7 @@ export default function Cam() {
             <div className={`fixed left-0 bottom-[5rem] w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center mb-10" onClick={generate}>
-                        <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-continue.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center" onClick={retake}>
                         <Image src='/btn-retake.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
