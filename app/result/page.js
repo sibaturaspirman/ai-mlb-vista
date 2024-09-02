@@ -39,8 +39,8 @@ export default function Result() {
     const downloadImageAI = () => {
         gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'CollectYourPhoto'
+            event_label: 'QR - '+payload.stasiunName,
+            event_action: 'CollectPhoto'
         })
         import('html2canvas').then(html2canvas => {
             html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
@@ -89,15 +89,15 @@ export default function Result() {
     const backHome = () => {
         gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'BackToHome'
+            event_label: 'CollectPhoto - '+payload.stasiunName,
+            event_action: 'Home'
         })
     }
     const backHome2 = () => {
         gtag('event', 'ClickButton', {
             event_category: 'Button',
             event_label: 'ScanQR - '+payload.stasiunName,
-            event_action: 'BackToHome'
+            event_action: 'Home'
         })
     }
 
