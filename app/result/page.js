@@ -93,6 +93,13 @@ export default function Result() {
             event_action: 'BackToHome'
         })
     }
+    const backHome2 = () => {
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'ScanQR - '+payload.stasiunName,
+            event_action: 'BackToHome'
+        })
+    }
 
     
 
@@ -134,7 +141,7 @@ export default function Result() {
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
-                    <div className={`fixed left-0 bottom-8 w-full`} onClick={backHome}>
+                    <div className={`fixed left-0 bottom-8 w-full`} onClick={backHome2}>
                         <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
