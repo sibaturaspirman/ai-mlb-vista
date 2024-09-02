@@ -11,6 +11,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 export default function MLBHome() {
   const router = useRouter();
   const [stasiun, setStasiun] = useState(null);
+  const [stasiunName, setStasiunName] = useState(null);
   const [data, setData] = useState(null)
   const [showData, setShowData] = useState(null)
   let displayData
@@ -33,7 +34,7 @@ export default function MLBHome() {
       console.log(result)
       displayData = result.data.map(function(todo){
         return (
-          <li key={todo.id}><input id={`choose_stasiun${todo.id}`} type="radio" name='choose_stasiun' value={todo.id} onChange={(e) => setStasiun(e.target.value)}/><label htmlFor={`choose_stasiun${todo.id}`} className='text-2xl lg:h-[140px] lg:text-4xl'>{todo.name}</label></li>
+          <li key={todo.id}><input id={`choose_stasiun${todo.id}`} type="radio" name='choose_stasiun' value={todo.id} onChange={(e) => setupLokasi(e.target.value, todo.name)}/><label htmlFor={`choose_stasiun${todo.id}`} className='text-2xl lg:h-[140px] lg:text-4xl'>{todo.name}</label></li>
         )
       })
 
@@ -47,12 +48,27 @@ export default function MLBHome() {
     })
   }, [])
 
+  const setupLokasi = (id, name) => {
+    setStasiun(id)
+    setStasiunName(name)
+    // console.log(id)
+    // console.log(name)
+  }
+
   const handleSubmit = () => {
     setCookie('stasiun', stasiun);
+    setCookie('stasiunName', stasiunName);
+
+    gtag('event', 'ClickButton', {
+      event_category: 'Button',
+      event_label: stasiunName,
+      event_action: 'Continue'
+    })
+
     setTimeout(() => {
         router.push('/home');
     }, 250);
-}
+  }
 
   return (
     <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center  py-16 px-20">

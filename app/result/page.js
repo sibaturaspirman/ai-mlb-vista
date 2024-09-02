@@ -22,6 +22,7 @@ export default function Result() {
       name: 'MLB',
       phone: '001',
       stasiun: getCookie('stasiun'),
+      stasiunName: getCookie('stasiunName'),
     });
     const { Canvas } = useQRCode();
 
@@ -36,6 +37,11 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'ResultPage - '+payload.stasiunName,
+            event_action: 'CollectYourPhoto'
+        })
         import('html2canvas').then(html2canvas => {
             html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
                 uploadImage(canvas)
@@ -47,9 +53,9 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' - '+stasiun);
+            bodyFormData.append("name", payload.name+' - '+payload.stasiun)+' - '+payload.stasiunName;
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("totemId", stasiun);
+            bodyFormData.append("totemId", payload.stasiun);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
           
             const options = {
@@ -79,6 +85,13 @@ export default function Result() {
                     }
                 });
         });
+    }
+    const backHome = () => {
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'ResultPage - '+payload.stasiunName,
+            event_action: 'BackToHome'
+        })
     }
 
     
@@ -149,13 +162,13 @@ export default function Result() {
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`}>
                         <div className={`w-full mt-14`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                                <button className="w-full relative mx-auto flex justify-center items-center mb-10">
+                                <button className="w-full relative mx-auto flex justify-center items-center mb-10" onClick={downloadImageAI}>
                                     <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
                                 </button>
-                                <Link href='/home' className="relative w-[80%] mx-auto flex justify-center items-center">
+                                <Link href='/home' className="relative w-[80%] mx-auto flex justify-center items-center" onClick={backHome}>
                                     <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>

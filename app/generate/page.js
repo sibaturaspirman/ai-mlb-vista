@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
 // import { Poppins} from "next/font/google";
 // const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // import io from 'socket.io-client';
@@ -37,6 +38,12 @@ export default function GenerateAmero() {
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
+
+    const [payload, setPayload] = useState({
+      stasiun: getCookie('stasiun'),
+      stasiunName: getCookie('stasiunName'),
+    });
+
     // Result state
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -57,15 +64,30 @@ export default function GenerateAmero() {
         setNumProses1(true)
         
         if(styleGender =='m'){
+            gtag('event', 'ClickButton', {
+                event_category: 'Button',
+                event_label: 'Male - '+payload.stasiunName,
+                event_action: 'SupriseMe'
+            })
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
         }else if(styleGender =='f'){
             if(styleFemale == 'normal'){
+                gtag('event', 'ClickButton', {
+                    event_category: 'Button',
+                    event_label: 'Female - '+payload.stasiunName,
+                    event_action: 'SupriseMe'
+                })
                 setTimeout(() => {
                     generateImageSwap(styleGender, getRandomInt(1, 5))
                 }, 500);
             }else{
+                gtag('event', 'ClickButton', {
+                    event_category: 'Button',
+                    event_label: 'Female Hijab - '+payload.stasiunName,
+                    event_action: 'SupriseMe'
+                })
                 setTimeout(() => {
                     generateImageSwap('h', getRandomInt(1, 4))
                 }, 500);
@@ -175,6 +197,13 @@ export default function GenerateAmero() {
         }
         // @snippet:end
     };
+    const backHome = () => {
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'IdentifyYourself - '+payload.stasiunName,
+            event_action: 'BackToHome'
+        })
+    }
 
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
@@ -279,7 +308,7 @@ export default function GenerateAmero() {
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/home' className="relative w-[60%] mx-auto flex justify-center items-center mt-10">
+                        <Link href='/home' className="relative w-[60%] mx-auto flex justify-center items-center mt-10" onClick={backHome}>
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
