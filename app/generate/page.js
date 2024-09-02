@@ -203,7 +203,7 @@ export default function GenerateAmero() {
     const backHome = () => {
         gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'IdentifyYourself - '+payload.stasiunName,
+            event_label: 'GenderSelection - '+payload.stasiunName,
             event_action: 'BackToHome'
         })
     }

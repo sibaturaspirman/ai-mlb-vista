@@ -61,7 +61,7 @@ export default function MLBHome() {
 
     gtag('event', 'ClickButton', {
       event_category: 'Button',
-      event_label: stasiunName,
+      event_label: 'Home - '+stasiunName,
       event_action: 'Continue'
     })
 
