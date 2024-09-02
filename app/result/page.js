@@ -47,9 +47,9 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name);
+            bodyFormData.append("name", payload.name+' - '+stasiun);
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("totemId", 1);
+            bodyFormData.append("totemId", stasiun);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
           
             const options = {
