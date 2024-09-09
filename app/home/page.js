@@ -59,7 +59,7 @@ export default function MLBHome() {
     console.log('trigger: ' + msg);
     if(msg == roomCode) {
       // alert("PINDAH PAGE")
-      router.push('/cam');
+      router.push('/cam2');
     }
   })
 
