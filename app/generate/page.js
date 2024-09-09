@@ -71,7 +71,7 @@ export default function GenerateAmero() {
             })
             setCookie('styleGender', 'Male');
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 3))
+                generateImageSwap(styleGender, getRandomInt(1, 2))
             }, 500);
         }else if(styleGender =='f'){
             if(styleFemale == 'normal'){
