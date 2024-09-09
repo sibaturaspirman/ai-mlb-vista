@@ -71,7 +71,7 @@ export default function GenerateAmero() {
             })
             setCookie('styleGender', 'Male');
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 5))
+                generateImageSwap(styleGender, getRandomInt(1, 3))
             }, 500);
         }else if(styleGender =='f'){
             if(styleFemale == 'normal'){
@@ -82,7 +82,7 @@ export default function GenerateAmero() {
                 })
                 setCookie('styleGender', 'Female');
                 setTimeout(() => {
-                    generateImageSwap(styleGender, getRandomInt(1, 5))
+                    generateImageSwap(styleGender, getRandomInt(1, 3))
                 }, 500);
             }else{
                 gtag('event', 'ClickButton', {
@@ -92,7 +92,7 @@ export default function GenerateAmero() {
                 })
                 setCookie('styleGender', 'Hijab');
                 setTimeout(() => {
-                    generateImageSwap('h', getRandomInt(1, 4))
+                    generateImageSwap('h', getRandomInt(1, 2))
                 }, 500);
             }
         }
